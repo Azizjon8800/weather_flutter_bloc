@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => WeatherBloc()..add(const GetCityNameEvent('Tashkent')),
+      create: (context) => WeatherBloc()..add(const GetCityNameEvent('xcvxv')),
       child: BlocConsumer<WeatherBloc, WeatherState>(
         listener: (context, state) {
           // TODO: implement listener

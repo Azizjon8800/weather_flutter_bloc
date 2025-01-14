@@ -14,7 +14,14 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     });
 
     on<GetCityNameEvent>((event, emit) async {
-      state.copyWith(status: WeatherStatus.loading);
+
+      if (event.cityName.trim().isEmpty) {
+        emit(state.copyWith(status: WeatherStatus.error, error: 'City name cannot be empty'));
+        return;
+      }
+
+      emit(state.copyWith(status: WeatherStatus.loading));
+      
       try {
         WeatherData weatherData = await WeatherRapo.apiCall(event.cityName);
 
